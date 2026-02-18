@@ -147,16 +147,20 @@ const completeOnboarding = async (req, res) => {
         user.onboardingCompleted = true;
         
         // Handle files (upload.fields returns object)
+        console.log("Onboarding files received:", req.files);
         if (req.files) {
             if (req.files.profileImage) {
+                console.log("Saving profile image:", req.files.profileImage[0].path);
                 user.profileImage = req.files.profileImage[0].path;
             }
             if (req.files.licenseImage) {
+                console.log("Saving license image:", req.files.licenseImage[0].path);
                 user.licenseImage = req.files.licenseImage[0].path;
             }
         }
         
         // Also handle body fields if sent during onboarding
+        console.log("Onboarding body received:", req.body);
         if (req.body.bio) user.bio = req.body.bio;
         if (req.body.phone) user.phone = req.body.phone;
         if (req.body.licenseNumber) user.licenseNumber = req.body.licenseNumber;

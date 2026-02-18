@@ -41,7 +41,7 @@ const userSchema = mongoose.Schema({
     },
     bio: {
         type: String,
-        default: "Automotive enthusiast. Premium member since 2026."
+        default: `Automotive enthusiast. Premium member since ${new Date().getFullYear()}.`
     },
     onboardingCompleted: {
         type: Boolean,
